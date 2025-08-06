@@ -5,7 +5,7 @@ import { user } from "@/store/index.js";
 import { storeToRefs } from "pinia";
 import { ElNotification } from "element-plus";
 import { debounce } from "@/utils/tool";
-
+import SwitchTheme from "@/components/SwitchTheme/index.vue";
 const router = useRouter();
 const route = useRoute();
 const userStore = user();
