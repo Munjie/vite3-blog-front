@@ -1,10 +1,10 @@
-@import "./variable.scss"; //引入全局自定义样式
-@import "./element/element.scss"; //引入element全局样式
-@import "./element/dark.scss"; //引入element-dark暗黑布局全局样式
-@import "./element/loading.scss"; //引入element全局加载样式
-@import "./custom.scss"; //引入自己喜欢使用的全局样式
-@import "./markdown.scss"; //引入对markdown预览的样式
-@import "./transition.scss"; //引入自定义的话
+@use "./variable.scss"; //引入全局自定义样式
+@use "./element/element.scss"; //引入element全局样式
+@use "./element/dark.scss"; //引入element-dark暗黑布局全局样式
+@use "./element/loading.scss"; //引入element全局加载样式
+@use "./custom.scss"; //引入自己喜欢使用的全局样式
+@use "./markdown.scss"; //引入对markdown预览的样式
+@use "./transition.scss"; //引入自定义的话
 
 //初始化样式
 html,
