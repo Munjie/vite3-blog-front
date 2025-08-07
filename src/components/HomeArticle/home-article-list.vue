@@ -108,11 +108,11 @@ watch(
                 @click="operate('detail', item)"
               >
                 <div
-                  v-image="item.article_cover"
+                  v-image="item.image"
                   class="scale flex justify-center items-center"
                   style="width: 100%; height: 100%"
                 >
-                  <el-image :src="item.article_cover" fit="cover" class="image">
+                  <el-image :src="item.image" fit="cover" class="image">
                     <template #error>
                       <svg-icon name="image404" :width="15" :height="15"></svg-icon>
                     </template>
@@ -123,66 +123,25 @@ watch(
               <div class="article-info flex_c_between">
                 <span
                   class="title text_overflow"
-                  :title="item.article_title"
+                  :title="item.title"
                   @click="operate('detail', item)"
                 >
-                  {{ item.article_title }}
+                  {{ item.title }}
                 </span>
                 <div class="meta">
-                  <span v-if="item.is_top == 1" class="to_pointer">
-                    <i class="iconfont icon-zhiding"></i>
-                    <span class="meta-label">置顶</span>
-                  </span>
-                  <span v-if="item.is_top == 1" class="article-meta__separator"></span>
                   <span class="to_pointer">
                     <i class="iconfont icon-calendar2"></i>
                     <span class="meta-label">发表于</span>
-                    <span class="meta-value">{{ item.createdAt }}</span>
-                  </span>
-                  <span class="to_pointer">
-                    <i class="iconfont icon-schedule"></i>
-                    <span class="meta-label">更新于</span>
-                    <span class="meta-value">{{ item.updatedAt }}</span>
+                    <span class="meta-value">{{ item.publishTime }}</span>
                   </span>
                   <span class="article-meta__separator"></span>
                   <span class="to_pointer" @click="operate('category', item)">
                     <i class="iconfont icon-folder"></i>
-                    <span class="meta-value">{{ item.categoryName }}</span>
-                  </span>
-                  <span class="article-meta__separator"></span>
-                  <span class="to_pointer" @click="operate('tag', item)">
-                    <i class="iconfont icon-label_fill"></i>
-                    <span
-                      class="meta-value"
-                      v-for="(tagName, index) in item.tagNameList"
-                      :key="index"
-                    >
-                      {{ index == item.tagNameList.length - 1 ? tagName : tagName + "、" }}
-                    </span>
+                    <span class="meta-value">{{ item.category }}</span>
                   </span>
                   <span class="article-meta__separator"></span>
                   <span class="to_pointer">
-                    <i class="iconfont icon-icon1"></i>
-                    <GsapCount
-                      class="meta-value"
-                      v-if="item.thumbs_up_times - 0 < 1000"
-                      :value="numberFormate(item.thumbs_up_times)"
-                    />
-                    <span v-else class="meta-value">
-                      {{ numberFormate(item.thumbs_up_times) }}
-                    </span>
-                  </span>
-                  <span class="article-meta__separator"></span>
-                  <span class="to_pointer">
-                    <i class="iconfont icon-chakan"></i>
-                    <GsapCount
-                      class="meta-value"
-                      v-if="item.view_times - 0 < 1000"
-                      :value="numberFormate(item.view_times)"
-                    />
-                    <span v-else class="meta-value">
-                      {{ numberFormate(item.view_times) }}
-                    </span>
+                    <i class="iconfont icon-chakan">{{ item.views }}</i>
                   </span>
                 </div>
                 <Tooltip
@@ -190,7 +149,7 @@ watch(
                   size="1.2rem"
                   align="left"
                   :lineHeight="3"
-                  :name="item.article_description"
+                  :name="item.introduction"
                 />
               </div>
             </div>
