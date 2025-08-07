@@ -24,6 +24,14 @@ const routes = [
         },
         component: () => import("@/views/home/home.vue"),
       },
+      {
+        path: "/article",
+        name: "Article",
+        meta: {
+          name: "文章",
+        },
+        component: () => import("@/views/article/article.vue"),
+      },
     ],
   },
 ];
