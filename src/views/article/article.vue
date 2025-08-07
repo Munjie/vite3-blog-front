@@ -211,33 +211,6 @@ onBeforeUnmount(() => {
             :code-theme="codeTheme"
             :theme="mainTheme ? 'dark' : 'light'"
           ></MdPreview>
-          <div class="article-info">
-            <div class="article-info-inner">
-              <div>
-                <span>文章作者：</span>
-                <a class="to_pointer" href="https://gitee.com/mrzym">{{
-                  articleInfo.authorName
-                }}</a>
-              </div>
-              <div>
-                <span>类型：</span>
-                <el-tag>{{
-                  articleInfo.type == 1 ? "原创" : articleInfo.type == 2 ? "转载" : "翻译"
-                }}</el-tag>
-              </div>
-              <div v-if="articleInfo.type != 1">
-                <span>原文链接：</span>
-                <a class="to_pointer" :href="articleInfo.origin_url">{{
-                  articleInfo.origin_url
-                }}</a>
-              </div>
-              <div v-else>
-                <span>本文链接：</span>
-                <a class="to_pointer" v-copy="currentUrl">{{ currentUrl }}</a>
-              </div>
-              <p>声明: 此文章版权归 Mr M 所有，如有转载，请注明来自原作者</p>
-            </div>
-          </div>
           <div :class="['like', isLike ? 'is-like' : '']" @click="like">
             <i class="iconfont icon-icon1 !mr-[5px]"></i>
             <GsapCount

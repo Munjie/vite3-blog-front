@@ -102,67 +102,32 @@ watch(
   <HomeHeader class="!w-[100%] !h-[100vh]" v-if="route.path == '/home'" />
   <div v-else class="page-header" :style="getBgCover">
     <div v-if="route.path == '/article'" class="article main-article">
-      <div class="loading" v-image="props.article.article_cover"></div>
+      <div class="loading" v-image="props.article.image"></div>
       <Tooltip
         width="80%"
         weight="500"
         size="2.4rem"
         color="#fff"
         align="center"
-        :name="article.article_title"
+        :name="article.title"
       />
       <div class="!mt-[20px]">
         <span class="to_pointer">
           <i class="iconfont icon-calendar2"></i>
           <span class="meta-label">发表于</span>
-          <span class="meta-value">{{ article.createdAt }}</span>
-        </span>
-        <span class="to_pointer">
-          <i class="iconfont icon-schedule"></i>
-          <span class="meta-label">更新于</span>
-          <span class="meta-value">{{ article.updatedAt }}</span>
+          <span class="meta-value">{{ article.createTime }}</span>
         </span>
         <span class="meta-separator"></span>
         <span class="to_pointer">
           <i class="iconfont icon-folder"></i>
-          <span class="meta-value">{{ article.categoryName }}</span>
+          <span class="meta-value">{{ article.category }}</span>
         </span>
         <span class="meta-separator"></span>
-        <span class="to_pointer">
-          <i class="iconfont icon-label_fill"></i>
-          <span class="meta-value" v-for="(item, index) in article.tagNameList" :key="item">{{
-            index + 1 == article.tagNameList.length ? item : item + "、"
-          }}</span>
-        </span>
-        <span class="meta-separator"></span>
-        <span class="to_pointer">
-          <i class="iconfont icon-icon1"></i>
-          <span class="meta-label">点赞数</span>
-          <GsapCount
-            class="meta-value"
-            v-if="article.thumbs_up_times - 0 < 1000"
-            :value="article.thumbs_up_times"
-          />
-          <span v-else class="meta-value">
-            {{ numberFormate(article.thumbs_up_times) }}
-          </span>
-        </span>
         <span class="meta-separator"></span>
         <span class="to_pointer">
           <i class="iconfont icon-chakan"></i>
           <span class="meta-label">浏览次数</span>
-          <GsapCount
-            class="meta-value"
-            v-if="article.view_times - 0 < 1000"
-            :value="article.view_times"
-          />
-          <span v-else class="meta-value">{{ numberFormate(article.view_times) }}</span>
-        </span>
-        <span class="meta-separator"></span>
-        <span class="to_pointer">
-          <i class="iconfont icon-speechbubble"></i>
-          <span class="meta-label">阅读时长</span>
-          <span class="meta-value">{{ readingDuration(article.reading_duration) }}</span>
+            <span class="meta-value">{{ article.views  }}</span>
         </span>
       </div>
       <div class="toggle-theme">
