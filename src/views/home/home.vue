@@ -235,7 +235,7 @@ onMounted(async () => {
                 <RightSide
                         :configDetail="configDetail"
                         :tags="tags"
-                        :runtime="runtime"
+                        :runtime="configDetail.runTime"
                         :loading="rightSizeLoading"
                 />
             </el-col>

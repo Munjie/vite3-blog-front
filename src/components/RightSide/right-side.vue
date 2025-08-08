@@ -181,16 +181,27 @@ onMounted(() => {
             <template #default>
               <RightSideItem icon="icon-localoffer" title="标签">
                 <div class="notice-text">
-                  <span
-                    class="notice-text__item"
-                    v-for="(tag, index) in tags"
-                    :key="index"
-                    :style="{ color: tag.color }"
-                    @click="goToArticleList(tag)"
-                    >{{
-                      index + 1 == tags.length ? tag.tag_name : tag.tag_name + "&nbsp;&nbsp;"
-                    }}</span
-                  >
+                    <div class="flex gap-2">
+                        <el-tag
+                                v-for="item in tags"
+                                :key="item.label"
+                                :type="item.type"
+                                effect="dark"
+                                round
+                        >
+                            {{ item.label }}
+                        </el-tag>
+                    </div>
+<!--                  <span-->
+<!--                    class="notice-text__item"-->
+<!--                    v-for="(tag, index) in tags"-->
+<!--                    :key="index"-->
+<!--                    :style="{ color: tag.color }"-->
+<!--                    @click="goToArticleList(tag)"-->
+<!--                    >{{-->
+<!--                      index + 1 == tags.length ? tag.tag_name : tag.tag_name + "&nbsp;&nbsp;"-->
+<!--                    }}</span-->
+<!--                  >-->
                 </div>
               </RightSideItem>
             </template>
