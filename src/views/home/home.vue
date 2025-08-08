@@ -3,9 +3,7 @@ import {ref, reactive, onMounted, nextTick} from "vue";
 import {user} from "@/store/index.js";
 
 import {pageHomeArticle} from "@/api/articles.ts";
-import {homeGetConfig} from "@/api/config";
-import {getAllTag} from "@/api/tag";
-import {homeGetStatistic} from "@/api/home";
+import {getBlogConfig, listAllTags} from "@/api/blogconf.ts";
 import {randomFontColor, numberFormate} from "@/utils/tool";
 
 import PageHeader from "@/components/PageHeader/index.vue";
@@ -41,7 +39,7 @@ const getHomeArticleList = async () => {
         let res = await pageHomeArticle(pageForm);
         if (res.code == 200) {
             articleList.value = res.data.records,
-            articleTotal.value = res.data.total
+                articleTotal.value = res.data.total
         }
     } finally {
         param.loading = false;
@@ -56,60 +54,40 @@ const pagination = (page) => {
 
 /** 网站右侧 */
 const rightSizeLoading = ref(false);
-const runtime = ref(0);
 let configDetail = ref({});
 let tags = ref([]);
 
 // 获取网站详细信息
 const getConfigDetail = async () => {
     try {
-        let res = await homeGetConfig();
-        if (res.code == 0 && typeof res.result != "string") {
-            configDetail.value = res.result;
+        let res = await getBlogConfig();
+        if (res.code == 200) {
+            configDetail.value = res.data;
             userStore.setBlogAvatar(res.result.blog_avatar);
-            calcRuntimeDays(configDetail.value.createdAt);
         }
     } finally {
         rightSizeLoading.value = false;
     }
 };
-// 获取文章数、分类数、标签数
-const getStatistic = async () => {
-    let res = await homeGetStatistic();
-    if (res.code == 0) {
-        Object.assign(configDetail.value, res.result);
-    }
-};
 
 // 获取所有的标签
 const getAllTags = async () => {
-    let res = await getAllTag();
-    if (res.code == 0) {
-        tags.value = res.result.map((r) => {
+    let res = await listAllTags();
+    if (res.code == 200) {
+        tags.value = res.data.map((r) => {
             r.color = randomFontColor();
             return r;
         });
     }
 };
-// 计算出网站运行天数
-const calcRuntimeDays = (time) => {
-    if (time) {
-        // eslint-disable-next-line
-        time = time.replace(/\-/g, "/"); // 解决ios系统上格式化时间出现NAN的bug
-        const now = new Date().getTime();
-        const created = new Date(time).getTime();
-        const days = Math.floor((now - created) / 8.64e7);
-        runtime.value = days;
-    }
-};
+
 
 const init = async () => {
     param.loading = true;
     rightSizeLoading.value = true;
-    await getHomeArticleList("init");
-    await getConfigDetail();
-    await getStatistic();
-    await getAllTags();
+    getHomeArticleList("init");
+    getConfigDetail();
+    getAllTags();
 };
 
 const observeMobileBox = () => {
@@ -166,7 +144,7 @@ onMounted(async () => {
                                     </div>
                                     <div class="flex_r_between">
                                         <span>运行时间：</span>
-                                        <span class="value">{{ runtime }} 天</span>
+                                        <span class="value">{{ configDetail.runTime }} 天</span>
                                     </div>
                                     <div class="flex_r_between">
                                         <span>博客访问次数：</span>
