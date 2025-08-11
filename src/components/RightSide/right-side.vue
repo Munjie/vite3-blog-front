@@ -179,7 +179,7 @@ onMounted(() => {
               <RightSideSkeletonItem />
             </template>
             <template #default>
-              <RightSideItem icon="icon-localoffer" title="标签">
+              <RightSideItem icon="icon-localoffer" title="标签云">
                 <div class="notice-text">
                     <div class="flex gap-2">
                         <el-tag
@@ -230,12 +230,7 @@ onMounted(() => {
                   </div>
                   <div class="flex_r_between">
                     <span>博客访问次数：</span>
-                    <GsapCount
-                      v-if="configDetail.view_time - 0 < 1000"
-                      class="value"
-                      :value="configDetail.view_time"
-                    />
-                    <span v-else class="value">{{ numberFormate(configDetail.view_time) }}</span>
+                    <GsapCount :value="configDetail.viewCount"/>
                   </div>
                 </div>
               </RightSideItem>
