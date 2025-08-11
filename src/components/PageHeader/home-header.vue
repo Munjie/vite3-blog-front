@@ -48,12 +48,23 @@ const scrollListener = debounce(() => {
     });
 };*/
 
+const getBgCover = computed(() => {
+    const bgList = getPageHeaderList.value;
+    const defaultImages = [
+        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060407_01.png?e=1754490442&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:ZQnSQsxmYOE1I3jn-ztqPdisRwg=",
+        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060357_02.png?e=1754982515&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:LffVe7mX9e0oQjoRsPpbHQseCHY=",
+        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060357_04.png?e=1754982588&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:S5FH0OX6QzIWOq0ApwnMRaxMHG4="
+    ];
+    const index = bgList.findIndex((bg) => bg.route_name === route.name);
+    // return index === -1 ? defaultImages : bgList.map(item => item.bg_url);
+    return defaultImages;
+});
 
 const initScrollEvent = () => {
   window.addEventListener("scroll", scrollListener);
 };
 
-const getBgCover = computed(() => {
+/*const getBgCover = computed(() => {
   const bgList = getPageHeaderList.value;
   // 做一个根据路由来判断判断页面背景图片
   let url;
@@ -63,7 +74,7 @@ const getBgCover = computed(() => {
   url = index == -1 ? myUrl : bgList[index].bg_url;
   // eslint-disable-next-line
   return url;
-});
+});*/
 
 onMounted(() => {
   // initOneSentence();
@@ -88,7 +99,12 @@ onBeforeUnmount(() => {
 
 <template>
   <div id="home">
-    <el-image class="bg !w-[100%] !h-[100%]" fit="cover" :src="getBgCover"></el-image>
+<!--    <el-image class="bg !w-[100%] !h-[100%]" fit="cover" :src="getBgCover"></el-image>-->
+      <el-carousel class="bg !w-[100%] !h-[100%]" :interval="3000" :motion-blur= true height="100vh">
+          <el-carousel-item v-for="(image, index) in getBgCover" :key="index">
+              <el-image class="bg-carousel-item !w-[100%] !h-[100%]" fit="cover" :src="image"></el-image>
+          </el-carousel-item>
+      </el-carousel>
     <div class="font">TODO</div>
     <TypeWriter class="type-writer" size="1.2em" :typeList="saying"></TypeWriter>
     <Waves />
