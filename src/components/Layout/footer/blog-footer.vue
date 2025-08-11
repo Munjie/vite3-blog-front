@@ -15,25 +15,24 @@
     <div class="footer-color mt-[5px] flex justify-center flex-wrap">
       <a
         class="p-[3px]"
-        href="https://www.aliyun.com/?spm=5176.28055625.J_3207526240.1.6a27154aw7v5VK"
+        href="https://vuejs.org/"
         target="_blank"
       >
         <img
-          src="https://img.shields.io/badge/%E9%98%BF%E9%87%8C%E4%BA%91-ECS%E6%9C%8D%E5%8A%A1%E5%99%A8-orange"
+          src="https://img.shields.io/badge/Vue3.5.17-Vite-yellow"
           alt=""
       /></a>
-      <a class="p-[3px]" href="https://imzbf.github.io/md-editor-v3/docs/index" target="_blank">
+      <a class="p-[3px]" href="https://cn.element-plus.org/zh-CN/" target="_blank">
         <img
-          src="https://img.shields.io/badge/MdEditorV3-MD%E7%BC%96%E8%BE%91%E5%99%A8-159957"
+          src="https://img.shields.io/badge/ElementPlus-UI-blue"
           alt=""
       /></a>
-      <a class="p-[3px]" href="https://butterfly.js.org/" target="_blank">
-        <img src="https://img.shields.io/badge/HEXO-BUTTERFLY-blue" alt="" />
+      <a class="p-[3px]" href="https://spring.io/projects/spring-cloud-alibaba" target="_blank">
+        <img src="https://img.shields.io/badge/SpringCloud-Alibaba-green" alt="" />
       </a>
-      <a class="p-[3px]" href="https://min.io/" target="_blank">
+      <a class="p-[3px]" href="https://www.elastic.co/cn/" target="_blank">
         <img
-          src="https://img.shields.io/badge/minio-%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F-purple
-"
+          src="https://img.shields.io/badge/ElaticSearch-ELK-violet"
           alt=""
         />
       </a>
