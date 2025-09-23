@@ -51,9 +51,9 @@ const scrollListener = debounce(() => {
 const getBgCover = computed(() => {
     const bgList = getPageHeaderList.value;
     const defaultImages = [
-        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060407_01.png?e=1754490442&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:ZQnSQsxmYOE1I3jn-ztqPdisRwg=",
-        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060357_02.png?e=1754982515&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:LffVe7mX9e0oQjoRsPpbHQseCHY=",
-        "http://qiniu.munjie.com/scifi_postapocalyptic_world_20250806060357_04.png?e=1754982588&token=b-lHQMCnIt3TO4P7QL1hVM06sm2cxAqN-53uwWDe:S5FH0OX6QzIWOq0ApwnMRaxMHG4="
+        "/src/assets/img/1001.png",
+        "/src/assets/img/1002.png",
+        "/src/assets/img/1003.png"
     ];
     const index = bgList.findIndex((bg) => bg.route_name === route.name);
     // return index === -1 ? defaultImages : bgList.map(item => item.bg_url);
