@@ -51,9 +51,9 @@ const scrollListener = debounce(() => {
 const getBgCover = computed(() => {
     const bgList = getPageHeaderList.value;
     const defaultImages = [
-        "/src/assets/img/1001.png",
-        "/src/assets/img/1002.png",
-        "/src/assets/img/1003.png"
+        "/1001.png",
+        "/1002.png",
+        "/1003.png"
     ];
     const index = bgList.findIndex((bg) => bg.route_name === route.name);
     // return index === -1 ? defaultImages : bgList.map(item => item.bg_url);
