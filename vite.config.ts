@@ -140,7 +140,7 @@ export default defineConfig((mode): any => {
                     replacement: resolve(__dirname, "./src"),
                 },
             ],
-            extensions: [".js", ".vue", ".json"],
+            extensions: [".js", ".ts", ".vue", ".json"],
         },
         server: {
             host: "0.0.0.0",
