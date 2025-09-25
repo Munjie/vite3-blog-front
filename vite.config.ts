@@ -1,6 +1,6 @@
 import { defineConfig,loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-import commonjs from "@rollup/plugin-commonjs"; // 让vite打包支持common.js语法
+import commonjs from "@rollup/plugin-commonjs"; // 让vite打包支持common.js语法,ceshi
 import AutoImport from "unplugin-auto-import/vite"; // 自动导入组件
 import Components from "unplugin-vue-components/vite"; // 自动导入src/components下的组件
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"; // 按需导入ep
