@@ -62,7 +62,7 @@ onMounted(async () => {
     await addView();
     if (window.name == "") {
         // 获取背景图片
-        getAllPageHeaderBg();
+        // getAllPageHeaderBg();
         welcome();
     }
 
