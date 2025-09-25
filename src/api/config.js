@@ -26,3 +26,20 @@ export const getAllPageHeader = () => {
     });
   });
 };
+
+
+export const getBlogConfig = () => {
+  return new Promise((resolve, reject) => {
+    http.get("/api/config/get-blog-conf", {}).then((res) => {
+      resolve(res);
+    });
+  });
+};
+
+export const listAllTags = () => {
+  return new Promise((resolve, reject) => {
+    http.get("/api/config/list-all-tag", {}).then((res) => {
+      resolve(res);
+    });
+  });
+};

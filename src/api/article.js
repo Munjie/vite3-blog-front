@@ -80,3 +80,12 @@ export const readingDuration = (id, duration) => {
     });
   });
 };
+
+
+export const pageHomeArticles = (params) => {
+  return new Promise((resolve, reject) => {
+    http.post("/api/article/page-home-article", params).then((res) => {
+      resolve(res);
+    });
+  });
+};

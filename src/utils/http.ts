@@ -1,6 +1,7 @@
 //  src/utils/request.ts
-// @ts-ignore
-import axios, {AxiosResponse, AxiosError } from 'axios';
+
+import axios from 'axios';
+import type {AxiosResponse, AxiosError } from 'axios';
 import { ElMessage} from "element-plus";
 
 
@@ -50,7 +51,12 @@ instance.interceptors.response.use(
         }
     }
 );
-export function get(url:any, params = {}) {
+// export function get(url:any, params = {}) {
+//     return instance.get(url, { params });
+// }
+
+// 定义 get 函数，显式类型
+export function get<T>(url: string, params: Record<string, any> = {}): Promise<T> {
     return instance.get(url, { params });
 }
 

@@ -2,8 +2,8 @@
 import {ref, reactive, onMounted, nextTick} from "vue";
 import {user} from "@/store/index.js";
 
-import {pageHomeArticle} from "@/api/articles.ts";
-import {getBlogConfig, listAllTags} from "@/api/blogconf.ts";
+
+import { pageHomeArticles } from "@/api/article";
 import {randomFontColor, numberFormate} from "@/utils/tool";
 
 import PageHeader from "@/components/PageHeader/index.vue";
@@ -14,7 +14,7 @@ import RightSideItem from "@/components/RightSide/components/item/right-side-ite
 import RightSideTop from "@/components/RightSide/components/item/right-side-top.vue";
 import RightSideSkeletonItem from "@/components/RightSide/components/skeleton/right-side-skeleton-item.vue";
 import {gsapTransY} from "@/utils/transform";
-
+import { getBlogConfig,listAllTags} from "@/api/config";
 defineOptions({
     name: "Home",
 });
@@ -36,7 +36,7 @@ const getHomeArticleList = async () => {
             pageSize: param.size,
             pageNum: param.current
         }
-        let res = await pageHomeArticle(pageForm);
+        let res = await pageHomeArticles(pageForm);
         if (res.code == 200) {
             articleList.value = res.data.records,
                 articleTotal.value = res.data.total
